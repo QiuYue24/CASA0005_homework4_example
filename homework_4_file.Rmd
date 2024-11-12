@@ -16,7 +16,7 @@ library(janitor)
 library(countrycode)
 ```
 
-## read in data
+## read in data，设置 locale 的编码方式为 latin1，解决文件编码问题，以确保读取文件时正确显示特殊字符。skip从文件的第一行开始读取，不跳过任何行。st_read: 这是 sf 包中的函数，用于读取地理空间数据文件（如 .shp 文件）。
 
 ```{r}
 HDI <- read_csv(here::here("homework_4", "HDR21-22_Composite_indices_complete_time_series.csv"),
@@ -42,6 +42,8 @@ Some notes:
 * COW codes = correlates of war codes
 * ISO = International Organization for Standardization with 2 or 3 letters...
 
+
+#janitor 包中的 clean_names 函数，它的作用是清理数据框中的列名。该函数会将列名转换为小写字母，去掉空格、特殊字符，使用下划线 _ 代替空格等。select选择特定列。mutate创建新的列
 ```{r}
 HDIcols<- HDI %>%
   clean_names()%>%
